@@ -7,13 +7,13 @@ sizeI = size(I);
 image1 = I(1:sizeI(1)/2,:);
 image2 = I(sizeI(1)/2+1:end,:);
 
-image1 = imgaussfilt(image1, 1);
-image2 = imgaussfilt(image2, 1);
+image1 = imgaussfilt(image1, 2);
+image2 = imgaussfilt(image2, 2);
 
 image1 = image1 - mean(image1(:));
 image2 = image2 - mean(image2(:));
 
-windowSize = 2; % Size of the interrogation window
+windowSize = 16; % Size of the interrogation window
 step = windowSize; % Step size for window overlap
 
 % Preallocate vectors for displacement
@@ -78,18 +78,18 @@ scalingFactor = 0.001; % Meters per pixel
 
 velocityX = u; %* scalingFactor / timeInterval;
 velocityY = v; %* scalingFactor / timeInterval;
-totalVelocity = sqrt(velocityX.^2 + velocityY.^2);
+% totalVelocity = sqrt(velocityX.^2 + velocityY.^2);
 % [X, Y] = meshgrid(1:step:cols, 1:step:rows);
 % quiver(velocityX, velocityY);
-% contourf(velocityX,"LineStyle","none")
+contourf(velocityX,"LineStyle","-","Levels",5)
 colorbar
 % %%
 % figure
 % % velocityX(20,13) = NaN;
 % % velocityX(18,13) = NaN;
-totalVelocity(:,end) = NaN;
-totalVelocity(end,:) = NaN;
-contourf(totalVelocity,"LineStyle","none")
+% totalVelocity(:,end) = NaN;
+% totalVelocity(end,:) = NaN;
+% contourf(totalVelocity,"LineStyle","none")
 % caxis([10, 30])
 colormap parula
 colorbar
