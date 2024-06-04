@@ -115,7 +115,7 @@ __pypackages__/
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
-
+FMT_group05.zip
 # SageMath parsed files
 *.sage.py
 
